@@ -51,17 +51,19 @@
     const titleList = document.querySelector(optTitleListSelector).innerHTML = '';
 
     /* for each article */
+    const articles = document.querySelectorAll(optArticleSelector);
+    for (let article of articles) {
+      /* get the article id */
+      const articleId = article.getAttribute('id');
+      //console.log(articleId);
+      /* find the title element */
+      //podana poniżej i powyżej nazwa article odnosi się do zmiennej let article czy do selektora article
+      /* get the title from the title element */
+      const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+      /* create HTML of the link */
 
-    /* get the article id */
-
-    /* find the title element */
-
-    /* get the title from the title element */
-
-    /* create HTML of the link */
-
-    /* insert link into titleList */
-
+      /* insert link into titleList */
+    }
   }
 
   generateTitleLinks();
