@@ -11,7 +11,7 @@
     "build": "npm-run-all build:* test",
     "test": "npm-run-all test:html test:js",
     "test:html": "html-validate *.html",
-    "test:js": "javascript-validate *.html",
+    "test:js": "javascript-validate *.js",
     "build:sass": "node-sass --output-style compact -o css sass",
     "build:autoprefixer": "postcss css/*.css --use autoprefixer -d css",
     "build-dev": "npm-run-all build-dev:sass build:autoprefixer",
