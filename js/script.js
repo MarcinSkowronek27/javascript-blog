@@ -82,6 +82,7 @@
     for (let article of articles) {
       /* find tags wrapper */
       const wrapperTags = article.querySelector(optArticleTagsSelector);
+      console.log(wrapperTags);
       /* make html variable with empty string */
       let html = '';
       /* get tags from data-tags attribute */
@@ -97,9 +98,10 @@
         // console.log(linkHTML);
         /* add generated code to html variable */
         html = html + linkHTML;
+        //console.log(html);
       }
       /* END LOOP: for each tag */
-
+      wrapperTags.insertAdjacentHTML('beforeend', html);
       /* insert HTML of all the links into the tags wrapper */
       /* END LOOP: for every article: */
     }
