@@ -39,7 +39,7 @@
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
-    optArticleTagsSelector = 'post-tags .list';
+    optArticleTagsSelector = '.post-tags .list';
 
   const generateTitleLinks = function () {
     /* remove contents of titleList */
@@ -82,7 +82,7 @@
     for (let article of articles) {
       /* find tags wrapper */
       const wrapperTags = article.querySelector(optArticleTagsSelector);
-      console.log(wrapperTags);
+      //console.log(wrapperTags);
       /* make html variable with empty string */
       let html = '';
       /* get tags from data-tags attribute */
