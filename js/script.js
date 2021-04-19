@@ -41,12 +41,12 @@
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list';
 
-  const generateTitleLinks = function () {
+  function generateTitleLinks(customSelector = '') {
     /* remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector).innerHTML = '';
     let html = '';
     /* for each article */
-    const articles = document.querySelectorAll(optArticleSelector);
+    const articles = document.querySelectorAll(optArticleSelector + customSelector);
     //let html = '';
     for (let article of articles) {
 
@@ -101,8 +101,10 @@
         //console.log(html);
       }
       /* END LOOP: for each tag */
-      wrapperTags.insertAdjacentHTML('beforeend', html);
+
       /* insert HTML of all the links into the tags wrapper */
+      wrapperTags.insertAdjacentHTML('beforeend', html);
+      console.log('wrappertags' + wrapperTags);
       /* END LOOP: for every article: */
     }
 
