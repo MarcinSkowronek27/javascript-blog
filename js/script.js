@@ -72,9 +72,9 @@
     for (let link of links) {
       link.addEventListener('click', titleClickHandler);
     }
-    // console.log(articles);
-    console.log(customSelector);
-  };
+    //console.log(articles);
+    //console.log(customSelector); /*tu nic nie wyświetla*/
+  }
 
 
   generateTitleLinks();
@@ -141,16 +141,17 @@
       /* END LOOP: for each found tag link */
     }
     /* execute function "generateTitleLinks" with article selector as argument */
-    generateTitleLinks('data-tags~="' + tag + '"]');
+    generateTitleLinks('[data-tags~="' + tag + '"]');
 
   }
   function addClickListenersToTags() {
     /* find all links to tags */
-
+    const allLinks = document.querySelectorAll(optArticleTagsSelector);
     /* START LOOP: for each link */
-
-    /* add tagClickHandler as event listener for that link */
-
+    for (let link of allLinks) {
+      /* add tagClickHandler as event listener for that link */
+      link.addEventListener('click', tagClickHandler);
+    }
     /* END LOOP: for each link */
   }
 
