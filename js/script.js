@@ -72,8 +72,8 @@
     for (let link of links) {
       link.addEventListener('click', titleClickHandler);
     }
-    //console.log(articles);
-    //console.log(customSelector); /*tu nic nie wyświetla*/
+    console.log(articles);
+    console.log(customSelector);
   }
 
 
