@@ -124,7 +124,7 @@
     /* START LOOP: for each active tag link */
     for (let link of activeLinks) {
       /* remove class active */
-      link.remove('active');
+      link.classList.remove('active');
     }
     /* END LOOP: for each active tag link */
 
