@@ -40,7 +40,8 @@
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
-    optArticleAuthorsSelector = '.post .post-author';
+    optArticleAuthorsSelector = '.post .post-author',
+    optTagsListSelector = '.tags.list';
 
   function generateTitleLinks(customSelector = '') {
     /* remove contents of titleList */
@@ -81,6 +82,8 @@
   generateTitleLinks();
 
   function generateTags() {
+    /* [NEW] create a new variable allTags with an empty object */
+    let allTags = {};
     /* find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
     /* START LOOP: for every article: */
@@ -104,6 +107,11 @@
         /* add generated code to html variable */
         html = html + linkHTML;
         //console.log(html);
+        /* [NEW] check if this link is NOT already in allTags */
+        if (!allTags[tag]) {
+          /* [NEW] add tag to allTags object */
+          allTags[tag] = 1;
+        }
       }
       /* END LOOP: for each tag */
       /* insert HTML of all the links into the tags wrapper */
@@ -228,4 +236,5 @@
   }
 
   addClickListenersToAuthors();
+
 }
