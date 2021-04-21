@@ -1,9 +1,23 @@
 {
   'use strict';
-  /*document.getElementById('test-button').addEventListener('click', function(){
-      const links = document.querySelectorAll('.titles a');
-      console.log('links:', links);
-    });*/
+
+  const opt = {
+    article: {Selector: '.post',
+  },
+  tagSizes: {
+    count: 5,
+    Prefix: 'tag-size-',
+  },
+  };
+  const optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles',
+  optArticleTagsSelector = '.post-tags .list',
+  optArticleAuthorsSelector = '.post .post-author',
+  optTagsListSelector = '.tags .list',
+  optCloudClassCount = 5,
+  optCloudClassPrefix = 'tag-size-',
+  optAuthorsListSelector = '.list .authors';
+
   const titleClickHandler = function (event) {
     event.preventDefault();
     const clickedElement = this;
@@ -36,22 +50,14 @@
     targetArticle.classList.add('active');
   };
 
-  const optArticleSelector = '.post',
-    optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles',
-    optArticleTagsSelector = '.post-tags .list',
-    optArticleAuthorsSelector = '.post .post-author',
-    optTagsListSelector = '.tags .list',
-    optCloudClassCount = 5,
-    optCloudClassPrefix = 'tag-size-',
-    optAuthorsListSelector = '.list .authors';
+
 
   function generateTitleLinks(customSelector = '') {
     /* remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector).innerHTML = '';
     let html = '';
     /* for each article */
-    const articles = document.querySelectorAll(optArticleSelector + customSelector);
+    const articles = document.querySelectorAll(opt.article.Selector + customSelector);
     //let html = '';
 
     for (let article of articles) {
@@ -103,7 +109,7 @@
     const normalizedCount = count - params.min;
     const normalizedMax = params.max - params.min;
     const percentage = normalizedCount / normalizedMax;
-    const classNumber = Math.floor( percentage * (optCloudClassCount - 2) + 1 ); /*tutaj zmieniłem z 1 na 2 */
+    const classNumber = Math.floor( percentage * (opt.tagSizes.count - 2) + 1 ); /*tutaj zmieniłem z 1 na 2 */
     return optCloudClassPrefix + classNumber;
   }
 
@@ -111,7 +117,7 @@
     /* [NEW] create a new variable allTags with an empty object */
     let allTags = {};
     /* find all articles */
-    const articles = document.querySelectorAll(optArticleSelector);
+    const articles = document.querySelectorAll(opt.article.Selector);
     /* START LOOP: for every article: */
     for (let article of articles) {
       /* find tags wrapper */
@@ -217,7 +223,7 @@
     /* [NEW] create a new variable allAuthors with an empty object */
     let allAuthors = {};
     /* find all articles */
-    const articles = document.querySelectorAll(optArticleSelector);
+    const articles = document.querySelectorAll(opt.article.Selector);
     /* START LOOP: for every author: */
     for (let author of articles) {
       /* find Authors wrapper */
