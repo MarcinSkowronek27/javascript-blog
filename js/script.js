@@ -5,7 +5,8 @@
     tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
     authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
     tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
-  }
+    allAuthorsLink: Handlebars.compile(document.querySelector('#template-all-authors-link').innerHTML),
+  };
   const opt = {
     article: {
       Selector: '.post',
@@ -182,7 +183,7 @@
 
     /*[NEW] add HTML from allTagsHTML to tagList */
     tagList.innerHTML = templates.tagCloudLink(allTagsData);
-console.log(allTagsData);
+    // console.log(allTagsData);
   }
 
   generateTags();
@@ -270,18 +271,23 @@ console.log(allTagsData);
     const authorsParams = calculateTagsParams(allAuthors);
     console.log('authorsParams:', authorsParams)
     /* [NEW] create variable for all links HTML code */
-    let allAuthorsHTML = '';
-
+    const allAuthorsData = { authors: [] };
     /* [NEW] START LOOP: for each author in allAuthors: */
     for (let author in allAuthors) {
       /* [NEW] generate code of a link and add it to allAuthorsHTML */
-      allAuthorsHTML += '<li><a href="#author-' + author + '" class="' + calculateTagClass(allAuthors[author], authorsParams) + '">' + author + '(' + allAuthors[author] + ') </a></li>';
-      console.log(allAuthorsHTML);
+      allAuthorsData.authors.push({
+        author: author,
+        count: allAuthors[author],
+        className: calculateTagClass(allAuthors[author], authorsParams)
+      });
+      // allAuthorsHTML += '<li><a href="#author-' + author + '" class="' + calculateTagClass(allAuthors[author], authorsParams) + '">' + author + '(' + allAuthors[author] + ') </a></li>';
+      // console.log(allAuthorsHTML);
     }
     /* [NEW] END LOOP: for each tag in allTags: */
 
     /*[NEW] add HTML from allTagsHTML to tagList */
-    authorList.innerHTML = allAuthorsHTML;
+    authorList.innerHTML = templates.allAuthorsLink(allAuthorsData);
+    console.log(allAuthorsData);
   }
   generateAuthors();
 
