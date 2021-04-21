@@ -256,7 +256,7 @@
        /* [NEW] START LOOP: for each author in allAuthors: */
        for (let author in allAuthors) {
          /* [NEW] generate code of a link and add it to allAuthorsHTML */
-         allAuthorsHTML += '<li><a href="#tag-' + author + '" class="' + calculateTagClass(allAuthors[author], authorsParams) + '">' + author + '(' + allAuthors[author] + ') </a></li>';
+         allAuthorsHTML += '<li><a href="#author-' + author + '" class="' + calculateTagClass(allAuthors[author], authorsParams) + '">' + author + '(' + allAuthors[author] + ') </a></li>';
            console.log(allAuthorsHTML);
        }
        /* [NEW] END LOOP: for each tag in allTags: */
