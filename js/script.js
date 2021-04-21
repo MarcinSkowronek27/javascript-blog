@@ -2,7 +2,8 @@
   'use strict';
   const templates = {
     articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
-    tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML)
+    tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+    authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
   }
   const opt = {
     article: {
@@ -241,7 +242,8 @@
       const authorsName = author.getAttribute('data-author');
       console.log(authorsName);
       /* generate HTML of the link */
-      const linkHTML = '<a href="#author-' + authorsName + '">' + authorsName + '</a>';
+      const linkHTMLData = { id: authorsName, title: authorsName };
+      const linkHTML = templates.authorLink(linkHTMLData);
       // console.log(linkHTML);
       /* add generated code to html variable */
       html = html + linkHTML;
