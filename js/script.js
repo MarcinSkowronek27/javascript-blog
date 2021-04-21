@@ -23,7 +23,7 @@
     optTagsListSelector = '.tags .list',
     optCloudClassCount = 5,
     optCloudClassPrefix = 'tag-size-',
-    optAuthorsListSelector = '.list .authors';
+    optAuthorsListSelector = '.list.authors';
 
   const titleClickHandler = function (event) {
     event.preventDefault();
@@ -142,7 +142,7 @@
       for (let tag of articleTagsArray) {
         // console.log(tag);
         /* generate HTML of the link */
-        const linkHTMLData = { id: tag, title: tag };
+        const linkHTMLData = { tag: tag };
         const linkHTML = templates.tagLink(linkHTMLData);
         // console.log(linkHTML);
         /* add generated code to html variable */
